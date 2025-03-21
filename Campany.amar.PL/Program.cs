@@ -1,3 +1,9 @@
+using Campany.amar.BLL.Interfaces;
+using Campany.amar.BLL.Repositories;
+using Campany.amar.DAL.Data.Context;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
+
 namespace Campany.amar.PL
 {
     public class Program
@@ -8,8 +14,18 @@ namespace Campany.amar.PL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews(); // Register Built-in MVC Services
+            builder.Services.AddScoped<IDepartmentRepository,DepartmentRepository>(); //Allow DI For DepartmentRepository
+            builder.Services.AddDbContext<CampanyDbContext>(Options => {
 
+                Options.UseSqlServer(builder.Configuration.GetConnectionString("DefauitConnections"));
+             
+            
+            
+            
+            });// Allow DI for CampanyDbContext
+            
             var app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
