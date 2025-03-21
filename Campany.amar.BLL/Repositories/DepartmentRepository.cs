@@ -13,9 +13,10 @@ namespace Campany.amar.BLL.Repositories
     {
         private  readonly CampanyDbContext _Context;//NuLL
 
-        public DepartmentRepository()
+        //ASK CLR Create Object From CampanyDbContext
+        public DepartmentRepository( CampanyDbContext context)
         {
-            _Context = new CampanyDbContext();
+            _Context = context;
         
         }
         public IEnumerable<Department> GetAll()
@@ -25,8 +26,8 @@ namespace Campany.amar.BLL.Repositories
         }
         public Department? Get(int id)
         {
-            using CampanyDbContext context = new CampanyDbContext();
-            return context.Departments.Find(id);
+          
+            return _Context.Departments.Find(id);
         }
         public int Add(Department model)
         {
