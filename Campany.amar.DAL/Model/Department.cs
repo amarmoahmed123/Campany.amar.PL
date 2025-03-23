@@ -11,7 +11,7 @@ namespace Campany.amar.DAL.Model
 
         public int Id { get; set; }
         public string Code { get; set; }
-        public string Name { get; set; }
+        public string Nmae { get; set; }
         public DateTime CreateAt { get; set; }
 
 

@@ -14,7 +14,7 @@ namespace Campany.amar.DAL.Data.Context
         public CampanyDbContext(DbContextOptions<CampanyDbContext>options) : base(options)
         { 
         
-         
+           
         
         }
 
@@ -25,10 +25,12 @@ namespace Campany.amar.DAL.Data.Context
         //}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server= 3MAR\\SQLEXPRESS;Database= Campanyamar; Trusted_Connection = True; TrustServerCretificate= True");
 
+            optionsBuilder.UseSqlServer("Server=3MAR\\SQLEXPRESS;Database=Campanyamar;Trusted_Connection=True;TrustServerCertificate=True");
 
         }
-        public DbSet<Department> Departments { get; set; }
+
+        public DbSet<Department> Departments { get; set; } 
+
     }
 }
