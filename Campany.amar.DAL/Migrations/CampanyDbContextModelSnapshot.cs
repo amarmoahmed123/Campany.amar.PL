@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Campany.amar.DAL.Data.Migrations
+namespace Campany.amar.DAL.Migrations
 {
     [DbContext(typeof(CampanyDbContext))]
     partial class CampanyDbContextModelSnapshot : ModelSnapshot

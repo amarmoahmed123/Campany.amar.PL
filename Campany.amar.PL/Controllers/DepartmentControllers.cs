@@ -15,7 +15,7 @@ namespace Campany.amar.PL.Controllers
             _departmentRepository = departmentRepository;
         }
         [HttpGet] // GET:/Department/Index
-        public  async  Task <ActionResult> Index()
+        public  IActionResult Index()
         {
            
            var departments = _departmentRepository.GetAll();
