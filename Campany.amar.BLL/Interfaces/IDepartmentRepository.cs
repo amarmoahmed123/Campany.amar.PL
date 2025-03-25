@@ -10,13 +10,10 @@ namespace Campany.amar.BLL.Interfaces
     public interface IDepartmentRepository
     {
         IEnumerable<Department> GetAll();
-
         Department? Get(int id);
-
         int Add(Department model);
         int Update(Department model);
         int Delete(Department model);
-
-
+      
     }
 }

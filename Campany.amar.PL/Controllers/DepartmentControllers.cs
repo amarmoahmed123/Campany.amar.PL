@@ -1,7 +1,9 @@
 ﻿using Campany.amar.BLL.Interfaces;
-using Campany.amar.BLL.Repositories;
+using Campany.amar.DAL.Model;
+using Campany.amar.PL.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+
+
 
 namespace Campany.amar.PL.Controllers
 {
@@ -10,16 +12,44 @@ namespace Campany.amar.PL.Controllers
         //MVC Controller
         private readonly IDepartmentRepository _departmentRepository;
         // ASK CLR Create Object From DepartmentRepository
-        public DepartmentController( IDepartmentRepository departmentRepository) 
+        public DepartmentController(IDepartmentRepository departmentRepository)
         {
             _departmentRepository = departmentRepository;
         }
         [HttpGet] // GET:/Department/Index
-        public  IActionResult Index()
+        public IActionResult Index()
         {
-           
-           var departments = _departmentRepository.GetAll();
+
+            var departments = _departmentRepository.GetAll();
             return View(departments);
+        }
+        [HttpPost]
+        
+
+        public IActionResult Create(DepartmentDto model)
+        {
+            if (ModelState.IsValid) //Server side Valdation 
+            {
+
+                var department = new Department()
+                {
+                    Code = model.Code,
+                    Name = model.Name,
+                    CreateAt = model.CreateAt
+
+                };
+
+                var Count = _departmentRepository.Add(department);
+                if (Count >0) 
+                {
+
+                    return RedirectToAction(nameof(Index));
+                
+                }
+            }
+
+            return View(model);
+
         }
     }
 }
